@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global custom cursor */
+* {
+  cursor: url('/cursor.cur'), auto;
+}
+
+/* Smooth transitions for video elements */
+video {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Base body setup */
+body {
+  margin: 0;
+  background-color: #000;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif; /* Optional: improve typography */
+}
+
+/* Canvas effect layer */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none; /* Prevent it from blocking UI interaction */
+}

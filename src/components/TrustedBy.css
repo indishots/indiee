@@ -1,0 +1,128 @@
+/* Global Scroll Fix */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Section Container */
+.trusted-by-section {
+  background: black;
+  padding: 4rem 2rem;
+  position: relative;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Heading Style */
+.trusted-by-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+/* Outer slider frame */
+.trusted-by-slider {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Scrolling track */
+.trusted-by-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+/* Pause animation on hover */
+.trusted-by-slider:hover .trusted-by-track {
+  animation-play-state: paused;
+}
+
+/* Each logo wrapper */
+.trusted-by-wrapper {
+  width: 180px;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Logo block */
+.trusted-by-logo {
+  text-align: center;
+  color: #ccc;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+/* Active/hovered effect */
+.trusted-by-logo.active {
+  transform: scale(1.08);
+  z-index: 10;
+  overflow: visible;
+}
+
+/* Logo image */
+.trusted-by-logo img {
+  height: 80px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.trusted-by-logo:hover img {
+  filter: grayscale(0%);
+}
+
+/* Name under logo */
+.trusted-by-logo span {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Description on hover */
+.logo-description {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  width: max-content;
+  max-width: 200px;
+  white-space: normal;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Optional: the 3 dots */
+.read-more {
+  display: inline-block;
+  margin-left: 0.3rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Animation Keyframes */
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

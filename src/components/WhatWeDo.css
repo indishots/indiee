@@ -1,0 +1,251 @@
+/* --- 1. Keyframes & Animations --- */
+@keyframes aurora-move {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(100px, 50px) rotate(180deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(147, 112, 219, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(147, 112, 219, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(147, 112, 219, 0); }
+}
+
+/* --- 2. Main Section & Aurora Background --- */
+.fancy-section-what-we-do {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 0.5rem 2rem; /* reduced bottom padding */
+  overflow: hidden;
+}
+
+.aurora-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.aurora-dot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.5;
+}
+
+.aurora-dot-1 {
+  width: 400px;
+  height: 400px;
+  background-color: #000000;
+  top: -50px;
+  left: -50px;
+  animation: aurora-move 20s infinite alternate;
+}
+
+.aurora-dot-2 {
+  width: 300px; /* reduced size */
+  height: 300px;
+  background-color: #000000;
+  bottom: 10px; /* lifted up */
+  right: 0;
+  animation: aurora-move 25s infinite alternate-reverse;
+}
+
+.aurora-dot-3 {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: aurora-move 15s infinite;
+}
+
+/* --- 3. Typography --- */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 1rem; /* reduced */
+}
+
+.fancy-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.fancy-subheading {
+  font-size: 1rem;
+  color: #a0aec0;
+  margin-bottom: 2rem;
+  max-width: 60ch;
+}
+
+/* --- 4. Card Interaction Wrapper and Trigger --- */
+.fancy-card-interaction-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px; /* reduced height */
+}
+
+.fancy-card-hover-trigger {
+  width: 100px;
+  height: 100px;
+  cursor: url('/cursor.cur'), auto;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: transform 0.5s ease-in-out;
+  animation: pulse 3s infinite;
+}
+
+.fancy-card-interaction-wrapper:hover .fancy-card-hover-trigger {
+  transform: scale(1.1);
+}
+
+.trigger-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.fancy-card-hover-trigger:hover .trigger-icon {
+  transform: rotate(360deg);
+}
+
+/* --- 5. Fancy Service Card --- */
+.fancy-service-card {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: transform 0.6s ease-in-out, opacity 0.5s ease-in-out;
+  width: 250px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(32, 31, 31, 0.08), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(22, 21, 21, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  overflow: hidden;
+  cursor: url('/cursor.cur'), auto;
+}
+
+.fancy-card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+}
+
+.service-icon-img {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.fancy-card-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* --- 6. Hover States --- */
+.fancy-card-interaction-wrapper:hover .fancy-service-card {
+  opacity: 1;
+}
+
+.fancy-card-interaction-wrapper:hover .card-1 {
+  transform: translateX(-26rem) translateY(-20px) rotate(-5deg);
+}
+.fancy-card-interaction-wrapper:hover .card-2 {
+  transform: translateX(-13rem) translateY(-10px) rotate(-3deg);
+}
+.fancy-card-interaction-wrapper:hover .card-3 {
+  transform: translateX(13rem) translateY(-10px) rotate(3deg);
+}
+.fancy-card-interaction-wrapper:hover .card-4 {
+  transform: translateX(26rem) translateY(-20px) rotate(5deg);
+}
+
+/* --- 7. Shine Effect --- */
+.fancy-service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.75s ease-in-out;
+}
+
+.fancy-service-card:hover::before {
+  left: 150%;
+}
+
+/* --- 8. Mobile Responsive --- */
+@media (max-width: 767px) {
+  .fancy-card-interaction-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: auto;
+  }
+
+  .fancy-card-hover-trigger {
+    display: none;
+  }
+
+  .fancy-service-card {
+    position: static;
+    opacity: 1;
+    transform: none;
+    width: 90%;
+    max-width: 350px;
+    height: auto;
+    backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .fancy-card-interaction-wrapper:hover .fancy-service-card {
+    transform: none;
+  }
+
+  .fancy-service-card:hover::before {
+    display: none;
+  }
+}
